@@ -24,7 +24,11 @@ db.employeCollection.find().sort({salaire: 1}).forEach(function(employe) {
 db.employeCollection.find().pretty().sort({salaire: 1});
 
 db.employeCollection.find().forEach(function(employe) {
-    employe.salaire += 500;
+
+    db.employeCollection.update(
+        { _id: employe._id }, 
+        { "$set": { "salaire": employe.salaire + 500 } }
+    );
 });
 
 db.employeCollection.find().pretty().sort({salaire: 1});
