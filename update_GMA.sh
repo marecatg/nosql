@@ -3,15 +3,19 @@
 mongo <<EOF 
 use customersdb
 
-db.createCollection('employeCollection', {size: 25});
+var size = 25;
+var nbToRemove = 23;
 
-for (var i = 0; i < 25; i++) {
+db.createCollection('employeCollection', {size: size});
+
+
+for (var i = 0; i < size; i++) {
    db.employeCollection.insert( { nom: "marecat " + i, prenom: "gaetan " + i, salaire: Math.floor(Math.random() * (15000 - 1000 + 1)) + 1000 });
 }
 
-var i = 1;
+var i = 0;
 db.employeCollection.find().sort({salaire: 1}).forEach(function(employe) {
-    if (i >= 25-23) {
+    if (i >= size-nbToRemove) {
         db.employeCollection.remove( employe );
     }
     i++;
