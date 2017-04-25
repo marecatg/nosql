@@ -3,8 +3,8 @@
 mongo <<EOF 
 use customersdb
 
-var size = 25;
-var nbToRemove = 22;
+var size = 10000;
+var nbToRemove = 8000;
 
 db.createCollection('employeCollection', {size: size});
 
@@ -40,7 +40,7 @@ db.employeCollection.find().pretty().sort({salaire: 1});
 
 
 print();
-var nbPlusGros = 2;
+var nbPlusGros = 10;
 print(nbPlusGros + " plus gros salaires");
 
 var j = 1;
