@@ -42,12 +42,13 @@ db.employeCollection.find().pretty().sort({salaire: 1});
 print();
 var nbPlusGros = 2;
 print(nbPlusGros + " plus gros salaires");
-i = 1;
+
+var j = 1;
 db.employeCollection.find().sort({salaire: -1}).forEach(function(employe) {
-    if (i <= nbPlusGros) {
-        print("Salaire n°" + i + " : " + employe.nom + " " + employe.prenom + " " + employe.salaire);
+    if (j <= nbPlusGros) {
+        print("Salaire n°" + j + " : " + employe.nom + " " + employe.prenom + " " + employe.salaire);
     }
-    i++;
+    j++;
 });
 
 EOF
