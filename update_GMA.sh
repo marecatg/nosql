@@ -6,9 +6,10 @@ use customersdb
 db.createCollection('employeCollection', {size: 25});
 
 for (var i = 0; i < 25; i++) {
-   db.employeCollection.insert( { nom: "nameTest", prenom: "prenomTest", salaire: Math.floor(Math.random() * (15000 - 1000 + 1)) + 1000 });
+   db.employeCollection.insert( { nom: "marecat " + i, prenom: "gaetan " + i, salaire: Math.floor(Math.random() * (15000 - 1000 + 1)) + 1000 });
 }
 
+db.employeCollection.sort({salaire: 1});
 db.employeCollection.find().pretty();
 
 EOF
