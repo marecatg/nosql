@@ -4,7 +4,7 @@ mongo <<EOF
 use customersdb
 
 var size = 25;
-var nbToRemove = 23;
+var nbToRemove = 22;
 
 db.createCollection('employeCollection', {size: size});
 
@@ -39,9 +39,9 @@ db.employeCollection.find().forEach(function(employe) {
 db.employeCollection.find().pretty().sort({salaire: 1});
 
 
-var nbPlusGros = 1;
+var nbPlusGros = 2;
 print();
-print(nbPlusGros + " plus gros");
+print(nbPlusGros + " plus gros salaires");
 i = 0;
 db.employeCollection.find().sort({salaire: -1}).forEach(function(employe) {
     if (i < nbPlusGros) {
