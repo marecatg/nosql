@@ -11,7 +11,7 @@ db.createCollection('employeCollection', {size: size});
 print();
 print("Insert");
 for (var i = 0; i < size; i++) {
-   db.employeCollection.insert( { nom: "marecat " + i, prenom: "gaetan " + i, salaire: Math.floor(Math.random() * (15000 - 1000 + 1)) + 1000 });
+   db.employeCollection.insert( { nom: "marecat" + i, prenom: "gaetan" + i, salaire: Math.floor(Math.random() * (15000 - 1000 + 1)) + 1000 });
 }
 
 print();
@@ -46,7 +46,7 @@ print(nbPlusGros + " plus gros salaires");
 var j = 1;
 db.employeCollection.find().sort({salaire: -1}).forEach(function(employe) {
     if (j <= nbPlusGros) {
-        print("Salaire n°" + j + " : " + employe.nom + " " + employe.prenom + " " + employe.salaire);
+        print("Salaire n°" + j + " : M." + employe.nom + " " + employe.prenom + " a un salaire de " + employe.salaire + "€");
     }
     j++;
 });
