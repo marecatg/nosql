@@ -39,13 +39,13 @@ db.employeCollection.find().forEach(function(employe) {
 db.employeCollection.find().pretty().sort({salaire: 1});
 
 
-var nbPlusGros = 2;
 print();
+var nbPlusGros = 2;
 print(nbPlusGros + " plus gros salaires");
-i = 0;
+i = 1;
 db.employeCollection.find().sort({salaire: -1}).forEach(function(employe) {
-    if (i < nbPlusGros) {
-        print(employe.nom + " " + employe.prenom + " " + employe.salaire);
+    if (i <= nbPlusGros) {
+        print("Salaire n°" + i + " : " + employe.nom + " " + employe.prenom + " " + employe.salaire);
     }
     i++;
 });
