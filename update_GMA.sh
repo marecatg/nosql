@@ -10,10 +10,12 @@ for (var i = 0; i < 25; i++) {
 }
 
 var salaireMax;
-db.employeCollection.find().sort({salaire: 1}).forEach(function(employe, key) {
-    if (key >= 5) {
+var i = 1;
+db.employeCollection.find().sort({salaire: 1}).forEach(function(employe) {
+    if (i >= 3) {
         db.employeCollection.remove( employe );
     }
+    i++;
 });
 
 db.employeCollection.find().pretty().sort({salaire: 1});
