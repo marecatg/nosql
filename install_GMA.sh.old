@@ -1,0 +1,32 @@
+#!/bin/sh
+
+cd /tmp/ 
+if [ "$(mongod)" ] 
+then
+    echo MongoDB est déjà installe 
+
+    yum list installed | grep mongo 
+    echo -n "Mongo db est déjà installé, voulez-vous le supprimer et le réinstaller ? (y/n)? " 
+    read answer 
+
+    if echo "$answer" | grep -iq "^y" ;
+    then
+        echo Début de la réinstallation
+        rm -f /tmp/mongodb-enterprise-server-3.4.2-1.el7.x86_64.rpm 
+        yum remove mongo* 
+        wget https://repo.mongodb.com/yum/redhat/7Server/mongodb-enterprise/3.4/x86_64/RPMS/mongodb-enterprise-server-3.4.2-1.el7.x86_64.rpm 
+        yum install https://repo.mongodb.com/yum/redhat/7Server/mongodb-enterprise/3.4/x86_64/RPMS/mongodb-enterprise-server-3.4.2-1.el7.x86_64.rpm 
+        echo y
+        ps -edf | grep mongod 
+        mongod --version 
+    else    
+        echo "Mongo db n'a pas était supprimé et réinstallé" 
+    fi 
+else
+    wget https://repo.mongodb.com/yum/redhat/7Server/mongodb-enterprise/3.4/x86_64/RPMS/mongodb-enterprise-server-3.4.2-1.el7.x86_64.rpm 
+    yum install https://repo.mongodb.com/yum/redhat/7Server/mongodb-enterprise/3.4/x86_64/RPMS/mongodb-enterprise-server-3.4.2-1.el7.x86_64.rpm 
+    echo y 
+    ps -edf | grep mongod 
+    mongod --version 
+fi
+cd /nosql/
