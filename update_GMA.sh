@@ -45,8 +45,10 @@ print(nbPlusGros + " plus gros");
 i = 0;
 db.employeCollection.find().sort({salaire: -1}).forEach(function(employe) {
     if (i < nbPlusGros) {
+        print(employe.nom);
         db.employeCollection.find({ _id : employe._id }).pretty();
     }
+    i++;
 });
 
 EOF
